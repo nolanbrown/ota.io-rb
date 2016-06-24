@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us" >
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="shortcut icon" href="<%= settings.asset_url %>/favicon.ico" type="image/x-icon" />
+		<meta name="version" content="1.0">
+		<link href="<%= settings.asset_url %>/css/appsendr.css" media="screen" rel="stylesheet" type="text/css" >
+		<link href="<%= settings.asset_url %>/css/skeleton.css" media="screen" rel="stylesheet" type="text/css" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta names="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta name="format-detection" content="telephone=no">
+		<title>Install <%= @app.name %></title>    
+    </head>
+    
+<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
+	<div class="container" id="master_container">
+        <h2 id="title">
+            <%= @app.name %> Install
+        </h2>
+
+			<div class="row-fluid">
+			  <div class="row">
+				<div id="app_details">
+				<img src="<%= @app.icon_url %>" width=57 style="float:left; border-radius:9px;">
+				<div id="app_title">
+                  <div id="app_name" class="header_text_color"><%= @app.name %></div>
+                  <div id="app_build_date" class="header_text_color"><%= @app.created_at.strftime("%B %d, %Y @ %I:%M%p").gsub(/ 0(\d\D)/, ' \1') %></div>
+                </div>
+				</div>
+			  </div>
+				
+              <div id="install_buttons">
+				<% if @app.android %>
+				<a href="<%= @app.install_track_url %>" id="android-install-buton" class="asbutton"><img src="/img/android_install_button@2x.png" width=300></a>
+				<% else %>
+				<a href="<%= @app.install_track_url %>" id="ios-install-button" class="asbutton"><img src="/img/ios_install_button@2x.png" width=300> </a>
+				<% end %>
+              </div>
+			</div>
+            <div id="page_info">
+                
+                <div id="footer">
+                    <a href="http://github.com/nolanbrown/ota.io">Deployed by OTA.io</a> <br />
+					<ul >				
+						<li class="first"><a href="<%= settings.base_url %>#mac">Mac App</a></li>
+						<li class="first"><a href="<%= settings.api_url %>#api">API</a></li>
+						<li class="last"><a href="http://twitter.com/appsendr" target="_blank">Twitter</a></li>
+
+					</ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

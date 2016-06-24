@@ -1,0 +1,26 @@
+Basics
+-------------
+
+Basic sinatra app to deploy iOS and Android applications over-the-air.
+
+Requirements
+------------
+
+Amazon S3
+
+
+API
+-----
+
+    POST: /app
+    - binary - file (IPA or APK)
+    - identifier - string ()
+    - icon - file (PNG)
+
+Deploy to Heroku
+------
+
+In the Terminal enter:
+
+    > heroku create # create your heroku app
+    > git push heroku master
